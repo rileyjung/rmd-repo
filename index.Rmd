@@ -1,0 +1,130 @@
+---
+title: "Reproducable Research with R session 1"
+author: "Chandra Chilamakuri (instructor)"
+date: "3 Nov 2024"
+output: 
+  html_document: 
+    toc: true
+    toc_float: true
+    toc_depth: 4
+  pdf_document: 
+    toc: true
+    toc_float: true
+    toc_depth: 4
+    
+---
+
+Hello, Website!
+
+For more information about simple R Markdown websites, please read the documentation at https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html.
+
+Please also note that simple R Markdown sites are _not_ based on **blogdown**. They are probably good for websites with only a few Rmd documents. For larger-scale and more sophisticated websites (such as blogs), you may want to use **blogdown** instead: https://github.com/rstudio/blogdown.
+
+
+# Introduction {#markdown-header}
+
+# Heading 1 
+
+## Heading 2
+
+### Heading 3 
+
+#### Heading 4
+
+##### Heading 5 size decreases as hashtag increases
+
+###### References
+
+## Formatting 
+
+I am **Riley** 
+I am __Riley__
+
+You need to put extra space
+
+between two lines or else they will 
+appear as one 
+
+I am from *Koreaaa*
+
+I am from _Korea_
+
+## Superscript 
+
+2^100^
+
+## Subscript
+
+beta~1~
+
+~~This is wrong~~
+
+I am Riley 
+\
+\
+This is how to put extra empty space between lines
+
+Footnote[^1] 
+Second footnote[^2]
+
+[link to header](#markdown-header)
+
+[Link Sanger](https://www.sanger.ac.uk/)
+
+[^1]: This is my first footnote 
+[^2]: This is my second footnote
+
+## Ordered Lists
+
+1. Item 1 
+2. Item 2 
+3. Item 3 
+    a. Item 3a
+    b. Item 3b 
+4. Item 4
+    i. item 4a
+    
+## Unordered lists 
+
+* Item 1
+  * A 
+  * B
+* Item 2 
+- Item 3
+
+## Tasks list
+##### easy for thesis objectives, etc. 
+
+- [] Task 1 
+- [x] Task 2 
+* [] Task3
+
+## Inserting images 
+
+![Rlogo](../Rlogo.png) 
+
+## Tables 
+
+|Column 1|Column 2|
+|--------|--------|
+|r1c1|r2c2|
+
+|Column 1|Column 2|
+|-------:|-------:|
+|r1c1|r2c2|
+
+|Column 1|Column 2|
+|:----:|:----:|
+|r1c1|r2c2|
+
+|Column 1|Column 2|
+|-|-|
+|r1c1|r2c2|
+
+## Code blocks
+
+```
+plot(1:100)
+hist(rnorm(1000))
+```
+

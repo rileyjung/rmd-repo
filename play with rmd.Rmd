@@ -1,0 +1,12 @@
+---
+title: "play with rmd"
+author: "Riley Jung"
+output: html_document
+date: "2024-12-03"
+---
+
+plot(100)
+
+```{r}
+plot(100)
+```

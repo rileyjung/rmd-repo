@@ -1,0 +1,112 @@
+---
+title: "play with rmd"
+author: "Riley Jung"
+output: html_document
+date: "2024-12-03"
+---
+
+plot(100)
+
+with this general setup code, you don't have to inlcude echo=FALSE, etc. every time 
+```{r setup, inlcude=FALSE}
+knitr::opts_chunk$set
+```
+
+
+```{r}
+plot(1:100)
+```
+
+```{r}
+download.file(url="https://raw.githubusercontent.com/cambiotraining/reproducibility-training/master/data/gapminder_data.csv", destfile="data/gapminder_data.csv")
+```
+
+shortcut for r chunk: command option i 
+
+if you do echo=FALSE, it doesn't show the code 
+
+```{r label, echo=FALSE}
+hist ( rnorm(1000), col='red')
+```
+
+if you do inlcude=FALSE, it doesn't show the output 
+
+```{r label2, include = FALSE}
+hist ( rnorm(1000), col='red')
+```
+
+```{r load-data, warning=FALSE, message=FALSE}
+
+#load tidyverse library
+library(tidyverse) # used for data manipulation
+library(rmarkdown) # used for paged_table function
+library(kableExtra) # used for table
+library(ggpubr) #used for ggarrange function 
+
+#read file into R
+pop_data <- read_csv("data/gapminder_data.csv")
+
+#create a table with data from European countries in 2007 showing the countries 
+#with the largest life expectancy at the top 
+euro_data_tbl <- pop_data %>% 
+                    filter(continent == "Europe" & year == 2007) %>% 
+                    select(-continent, -year) %>% 
+                    arrange(desc(lifeExp)) %>% 
+                    rename(Country = country, "Population Size" = pop, 
+                      "Life Expectancy" = lifeExp, "GDP" = gdpPercap)
+
+```
+
+## Table 
+
+```{r kbl}
+euro_data_tbl %>% 
+          kbl()
+```
+
+```{r kbl2}
+euro_data_tbl %>% 
+          kbl() %>%
+          kable_styling(bootstrap_options = c("striped", "hover")) 
+```
+
+```{r}
+library(DT)
+euro_data_tbl%>%
+  datatable()
+```
+
+```{r load-data2, message=FALSE}
+#load tidyverse library
+library(tidyverse) # used for data manipulation
+library(rmarkdown) # used for paged_table function
+library(kableExtra) # used for table
+library(ggpubr) #used for ggarrange function 
+
+#read file into R
+pop_data <- read_csv("data/gapminder_data.csv")
+
+#create a table with data from European countries in 2007 showing the countries with the largest life expectancy at the top 
+euro_data_tbl <- pop_data %>% 
+                    filter(continent == "Europe" & year == 2007) %>% 
+                    select(-continent, -year) %>% 
+                    arrange(desc(lifeExp)) %>% 
+                    rename(Country = country, "Population Size" = pop, "Life Expectancy" = lifeExp, "GDP" = gdpPercap)
+                    
+```
+
+```{r kbl-table}
+euro_data_tbl %>% 
+          kable(caption="European countries ordered by greatest life expectancy from 2007 data") %>% 
+          kable_styling(bootstrap_options = "striped", full_width = F) %>% 
+          scroll_box(width = "100%", height = "200px")
+```
+
+```{r vio_plot}
+p = pop_data %>%
+  filter(continent == 'Europe') %>%
+  ggplot(aes (x=year, y=lifeExp, group=year)) + 
+          geom_violin()
+print(p)
+```
+
